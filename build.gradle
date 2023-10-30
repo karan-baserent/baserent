@@ -17,7 +17,12 @@ dependencies {
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
+    implementation(platform("software.amazon.awssdk:bom:2.20.45"))
+    implementation("software.amazon.awssdk:secretsmanager")
     testImplementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-http-client-jdk")
+    annotationProcessor("io.micronaut:micronaut-inject-java")
+    runtimeOnly("io.micronaut:micronaut-core")
 }
 
 
@@ -49,6 +54,10 @@ micronaut {
         optimizeNetty = true
     }
 }
+
+/*run {
+    jvmArgs "-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
+}*/
 
 
 
