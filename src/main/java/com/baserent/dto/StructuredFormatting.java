@@ -25,12 +25,4 @@ public class StructuredFormatting {
     public void setMainText(String mainText) {
         this.mainText = mainText;
     }
-
-    @Override
-    public String toString() {
-        return "StructuredFormatting{" +
-                "mainText='" + mainText + '\'' +
-                ", secondaryText='" + secondaryText + '\'' +
-                '}';
-    }
 }

@@ -8,20 +8,13 @@ import java.util.List;
 @Serdeable
 public class Prediction {
     @JsonProperty("structured_formatting")
-    private List<StructuredFormatting> predictions;
+    private StructuredFormatting structuredFormatting;
 
-    public List<StructuredFormatting> getPredictions() {
-        return predictions;
+    public StructuredFormatting getStructuredFormatting() {
+        return structuredFormatting;
     }
 
-    public void setPredictions(List<StructuredFormatting> predictions) {
-        this.predictions = predictions;
-    }
-
-    @Override
-    public String toString() {
-        return "Prediction{" +
-                "structuredFormatting=" + predictions +
-                '}';
+    public void setStructuredFormatting(StructuredFormatting structuredFormatting) {
+        this.structuredFormatting = structuredFormatting;
     }
 }
