@@ -1,7 +1,6 @@
 package com.baserent.clients;
 
-import com.baserent.dto.Prediction;
-import com.baserent.dto.Predictions;
+import com.baserent.dto.incoming.Predictions;
 import io.micronaut.core.async.annotation.SingleResult;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.QueryValue;

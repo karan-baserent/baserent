@@ -1,9 +1,8 @@
-package com.baserent.dto;
+package com.baserent.dto.incoming;
 
+import com.baserent.dto.incoming.outgoing.AutoCompleteSuggestion;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.serde.annotation.Serdeable;
-
-import java.util.List;
 
 @Serdeable
 public class Prediction {
@@ -16,5 +15,9 @@ public class Prediction {
 
     public void setStructuredFormatting(StructuredFormatting structuredFormatting) {
         this.structuredFormatting = structuredFormatting;
+    }
+
+    public AutoCompleteSuggestion toAutoCompleteSuggestion() {
+        return structuredFormatting.toAutoCompleteSuggestion();
     }
 }

@@ -1,5 +1,6 @@
-package com.baserent.dto;
+package com.baserent.dto.incoming;
 
+import com.baserent.dto.incoming.outgoing.AutoCompleteSuggestion;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.serde.annotation.Serdeable;
 
@@ -24,5 +25,9 @@ public class StructuredFormatting {
 
     public void setMainText(String mainText) {
         this.mainText = mainText;
+    }
+
+    public AutoCompleteSuggestion toAutoCompleteSuggestion() {
+        return new AutoCompleteSuggestion(mainText, secondaryText);
     }
 }
