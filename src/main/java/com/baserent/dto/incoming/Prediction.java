@@ -1,6 +1,6 @@
 package com.baserent.dto.incoming;
 
-import com.baserent.dto.incoming.outgoing.AutoCompleteSuggestion;
+import com.baserent.dto.outgoing.AutoCompleteSuggestion;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.serde.annotation.Serdeable;
 
@@ -8,6 +8,9 @@ import io.micronaut.serde.annotation.Serdeable;
 public class Prediction {
     @JsonProperty("structured_formatting")
     private StructuredFormatting structuredFormatting;
+
+    @JsonProperty("place_id")
+    private String placeId;
 
     public StructuredFormatting getStructuredFormatting() {
         return structuredFormatting;
@@ -17,7 +20,17 @@ public class Prediction {
         this.structuredFormatting = structuredFormatting;
     }
 
+    public String getPlaceId() {
+        return placeId;
+    }
+
+    public void setPlaceId(String placeId) {
+        this.placeId = placeId;
+    }
+
     public AutoCompleteSuggestion toAutoCompleteSuggestion() {
-        return structuredFormatting.toAutoCompleteSuggestion();
+        AutoCompleteSuggestion suggestion = structuredFormatting.toAutoCompleteSuggestion();
+        suggestion.setPlaceId(placeId);
+        return suggestion;
     }
 }

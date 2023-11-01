@@ -1,4 +1,4 @@
-package com.baserent.dto.incoming.outgoing;
+package com.baserent.dto.outgoing;
 
 import io.micronaut.serde.annotation.Serdeable;
 

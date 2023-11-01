@@ -1,10 +1,9 @@
 package com.baserent.dto.incoming;
 
-import com.baserent.dto.incoming.outgoing.SearchResponse;
+import com.baserent.dto.outgoing.SearchResponse;
 import io.micronaut.serde.annotation.Serdeable;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
