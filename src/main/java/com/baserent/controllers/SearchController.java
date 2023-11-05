@@ -3,25 +3,30 @@ package com.baserent.controllers;
 import com.baserent.clients.GooglePlacesApiClient;
 import com.baserent.dto.incoming.Predictions;
 import com.baserent.dto.outgoing.SearchResponse;
-import com.baserent.util.AwsUtil;
 import io.micronaut.context.annotation.Property;
+import io.micronaut.context.annotation.Value;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Produces;
+import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.rules.SecurityRule;
+import jakarta.inject.Named;
 
 import java.util.Map;
 
 @Controller("/search")
+@Secured(SecurityRule.IS_ANONYMOUS)
 public class SearchController {
-    @Property(name = "aws.secrets.google-places-api-key")
+    @Property(name = "google.places-api-key")
     private String googlePlacesApiKey;
 
     private final GooglePlacesApiClient googlePlacesApiClient;
 
-    public SearchController(GooglePlacesApiClient googlePlacesApiClient) {
+    public SearchController(
+            GooglePlacesApiClient googlePlacesApiClient) {
         this.googlePlacesApiClient = googlePlacesApiClient;
     }
 
@@ -30,8 +35,7 @@ public class SearchController {
     public HttpResponse<SearchResponse> search(HttpRequest<?> request) {
         String searchTerm = request.getParameters().getFirst("location").orElseThrow();
         System.out.println("location: " + searchTerm);
-        String apiKey = AwsUtil.getValue(googlePlacesApiKey);
-        Predictions response = googlePlacesApiClient.getAutoCompleteResults(searchTerm, apiKey);
+        Predictions response = googlePlacesApiClient.getAutoCompleteResults(searchTerm, googlePlacesApiKey);
         return HttpResponse.ok(response.toSearchResponse()).headers(Map.of("Access-Control-Allow-Origin", "*"));
     }
 }

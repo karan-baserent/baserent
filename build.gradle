@@ -15,14 +15,19 @@ dependencies {
     annotationProcessor("io.micronaut:micronaut-http-validation")
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
+    implementation("io.micronaut.security:micronaut-security-jwt")
     compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
-    implementation(platform("software.amazon.awssdk:bom:2.20.45"))
-    implementation("software.amazon.awssdk:secretsmanager")
+    implementation("io.micronaut.aws:micronaut-aws-secretsmanager")
+    implementation("io.micronaut.aws:micronaut-aws-sdk-v2:3.9.2")
+    implementation("io.micronaut.discovery:micronaut-discovery-client")
     testImplementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-http-client-jdk")
     annotationProcessor("io.micronaut:micronaut-inject-java")
     runtimeOnly("io.micronaut:micronaut-core")
+    runtimeOnly("org.yaml:snakeyaml")
+    annotationProcessor("io.micronaut.security:micronaut-security-annotations")
+    implementation("io.micronaut.security:micronaut-security-jwt")
 }
 
 

@@ -1,0 +1,5 @@
+micronaut:
+  application:
+    name: baserent
+  config-client:
+    enabled: false

@@ -1,0 +1,16 @@
+micronaut:
+  http:
+    services:
+      google-places:
+        url: https://maps.googleapis.com
+  security:
+    authentication: cookie
+    token:
+      jwt:
+        generator:
+          refresh-token:
+            secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:}"'
+        signatures:
+          secret:
+            generator:
+              secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:}"'
