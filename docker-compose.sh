@@ -1,2 +1,2 @@
 ./gradlew dockerBuildNative
-docker-compose up
+docker-compose --env-file .env-docker-compose up

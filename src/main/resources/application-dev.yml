@@ -15,16 +15,12 @@ micronaut:
             generator:
               secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:b}"'
   datasources:
-    h2:
-      url: jdbc:h2:mem:default;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-      username: admin
-      password: ""
-      driverClassName: org.h2.Driver
-      dialect: H2
+    postgres:
+      driverClassName: org.postgresql.Driver
       schema-generate: CREATE_DROP
 liquibase:
   datasources:
-    h2:
+    postgres:
       change-log: 'classpath:db/changelog-root.xml'
       liquibase-schema: liquibase
       default-schema: baserent

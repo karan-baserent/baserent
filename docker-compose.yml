@@ -9,3 +9,16 @@ services:
     build:
       context: build/docker/native-main
       dockerfile: DockerfileNative
+    environment:
+      micronaut.datasources.postgres.username: ${POSTGRES_USER}
+      micronaut.datasources.postgres.url: postgres://${POSTGRES_USER}@postgres:5432/${POSTGRES_DB}?sslmode=disable
+    depends_on:
+      - postgres
+  postgres:
+    container_name: baserent_postgres
+    image: postgres:15-alpine3.18
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST_AUTH_METHOD: trust
