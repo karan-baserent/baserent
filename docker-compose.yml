@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  baserent:
+    container_name: baserent
+    ports:
+      - "8080:8080"
+      - "443:443"
+    build:
+      context: build/docker/native-main
+      dockerfile: DockerfileNative

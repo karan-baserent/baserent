@@ -20,3 +20,8 @@ micronaut:
       username: // add user
       password: // add password
       driverClassName: org.h2.Driver
+  liquibase:
+    enabled: true
+    datasources:
+      postgres:
+        enabled: false

@@ -15,13 +15,18 @@ micronaut:
             generator:
               secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:b}"'
   datasources:
-    default:
+    h2:
       url: jdbc:h2:mem:default;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
       username: admin
       password: ""
       driverClassName: org.h2.Driver
       dialect: H2
       schema-generate: CREATE_DROP
-  server:
-    netty:
-      log-level: TRACE
+liquibase:
+  datasources:
+    h2:
+      change-log: 'classpath:db/changelog-root.xml'
+      liquibase-schema: liquibase
+      default-schema: baserent
+      test-rollback-on-update: true
+
