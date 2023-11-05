@@ -28,6 +28,13 @@ dependencies {
     runtimeOnly("org.yaml:snakeyaml")
     annotationProcessor("io.micronaut.security:micronaut-security-annotations")
     implementation("io.micronaut.security:micronaut-security-jwt")
+    runtimeOnly("com.h2database:h2")
+    implementation("io.micronaut.sql:micronaut-jooq")
+    implementation("org.postgresql:postgresql:42.6.0")
+    annotationProcessor("io.micronaut.data:micronaut-data-processor")
+    implementation("io.micronaut.data:micronaut-data-jdbc")
+    runtimeOnly("io.micronaut.sql:micronaut-jdbc-hikari")
+
 }
 
 

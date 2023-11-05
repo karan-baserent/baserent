@@ -14,3 +14,9 @@ micronaut:
           secret:
             generator:
               secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:}"'
+  datasources:
+    postgres:
+      url: // add url
+      username: // add user
+      password: // add password
+      driverClassName: org.h2.Driver
