@@ -1,16 +1,12 @@
 package com.baserent.entity.owner;
 
-import io.micronaut.data.annotation.Id;
-import io.micronaut.data.annotation.MappedEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
-@MappedEntity
+@Entity
 public class Owner {
     @Id
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "owner_id_sequence")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "first_name", nullable = false)
