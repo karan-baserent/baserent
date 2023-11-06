@@ -14,15 +14,16 @@ micronaut:
           secret:
             generator:
               secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:b}"'
-  datasources:
-    postgres:
-      driverClassName: org.postgresql.Driver
-      schema-generate: CREATE_DROP
+datasources:
+  postgres:
+    #username: ${POSTGRES_USER}
+    #url: jdbc:postgresql://baserent_postgres:5432/${POSTGRES_DB}?user=${POSTGRES_USER}&sslmode=disable
+    driverClassName: org.postgresql.Driver
+    schema-generate: NONE
+    dialect: POSTGRES
+
 liquibase:
   datasources:
     postgres:
-      change-log: 'classpath:db/changelog-root.xml'
-      liquibase-schema: liquibase
-      default-schema: baserent
-      test-rollback-on-update: true
+      change-log: 'db/changelog-root.xml'
 

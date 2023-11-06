@@ -4,7 +4,7 @@ import io.micronaut.serde.annotation.Serdeable;
 
 @Serdeable
 public class OwnerSignUpResponseDto {
-    private Long id;
+    private Integer id;
 
     private String firstName;
 
@@ -12,11 +12,11 @@ public class OwnerSignUpResponseDto {
 
     private String email;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -56,7 +56,7 @@ public class OwnerSignUpResponseDto {
             return new OwnerSignUpResponseDtoBuilder();
         }
 
-        public OwnerSignUpResponseDtoBuilder withId(Long id) {
+        public OwnerSignUpResponseDtoBuilder withId(Integer id) {
             ownerSignUpResponseDto.setId(id);
             return this;
         }

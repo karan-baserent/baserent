@@ -71,6 +71,10 @@ tasks.named('dockerfileNative') {
     baseImage('ubuntu:latest')
 }
 
+tasks.named('dockerfile') {
+    baseImage('arm64v8/eclipse-temurin')
+}
+
 /*run {
     jvmArgs "-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
 }*/

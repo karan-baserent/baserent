@@ -7,15 +7,23 @@ services:
       - "8080:8080"
       - "443:443"
     build:
-      context: build/docker/native-main
-      dockerfile: DockerfileNative
+      #context: build/docker/native-main
+      #dockerfile: DockerfileNative
+       context: build/docker/main
+       dockerfile: Dockerfile
     environment:
-      micronaut.datasources.postgres.username: ${POSTGRES_USER}
-      micronaut.datasources.postgres.url: postgres://${POSTGRES_USER}@postgres:5432/${POSTGRES_DB}?sslmode=disable
+        - datasources.postgres.username=${POSTGRES_USER}
+        - datasources.postgres.url=jdbc:postgresql://${POSTGRES_CONTAINER_NAME}:5432/${POSTGRES_DB}?user=${POSTGRES_USER}&sslmode=disable
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
   postgres:
-    container_name: baserent_postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    container_name: ${POSTGRES_CONTAINER_NAME}
     image: postgres:15-alpine3.18
     restart: always
     environment:
