@@ -3,8 +3,3 @@ micronaut:
     name: baserent
   config-client:
     enabled: true
-aws:
-  secretsmanager:
-    secrets:
-      - secret-name: google-secrets
-        prefix: google

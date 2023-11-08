@@ -5,15 +5,7 @@ micronaut:
         url: https://maps.googleapis.com
   security:
     authentication: cookie
-    token:
-      jwt:
-        generator:
-          refresh-token:
-            secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:a}"'
-        signatures:
-          secret:
-            generator:
-              secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:b}"'
+
 datasources:
   postgres:
     driverClassName: org.postgresql.Driver

@@ -20,7 +20,7 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut.aws:micronaut-aws-secretsmanager")
     implementation("io.micronaut.aws:micronaut-aws-sdk-v2:3.9.2")
-    implementation("io.micronaut.discovery:micronaut-discovery-client")
+    runtimeOnly("io.micronaut.discovery:micronaut-discovery-client")
     testImplementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-http-client-jdk")
     annotationProcessor("io.micronaut:micronaut-inject-java")
