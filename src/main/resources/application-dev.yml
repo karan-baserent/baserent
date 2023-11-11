@@ -11,9 +11,13 @@ datasources:
     driverClassName: org.postgresql.Driver
     schema-generate: NONE
     dialect: POSTGRES
+    catalog: primary
+    schema: baserent
+    pool-name: hikari-1
 
 liquibase:
   datasources:
     postgres:
       change-log: 'db/changelog-root.xml'
+      liquibase-schema: public
 

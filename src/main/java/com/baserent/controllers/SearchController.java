@@ -1,10 +1,9 @@
 package com.baserent.controllers;
 
-import com.baserent.clients.GooglePlacesApiClient;
-import com.baserent.dto.incoming.Predictions;
-import com.baserent.dto.outgoing.SearchResponse;
+import com.baserent.infrastructure.clients.GooglePlacesApiClient;
+import com.baserent.infrastructure.dto.incoming.Predictions;
+import com.baserent.infrastructure.dto.outgoing.SearchResponse;
 import io.micronaut.context.annotation.Property;
-import io.micronaut.context.annotation.Value;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
@@ -13,7 +12,6 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Produces;
 import io.micronaut.security.annotation.Secured;
 import io.micronaut.security.rules.SecurityRule;
-import jakarta.inject.Named;
 
 import java.util.Map;
 
