@@ -9,8 +9,6 @@ micronaut:
 datasources:
   postgres:
     driverClassName: org.postgresql.Driver
-    schema-generate: NONE
-    dialect: POSTGRES
     catalog: primary
     schema: baserent
     pool-name: hikari-1
