@@ -5,13 +5,14 @@ import com.baserent.domain.owner.Owner;
 import com.baserent.infrastructure.dto.incoming.owner.OwnerSignInRequestDto;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import org.jooq.exception.DataAccessException;
 
 @Singleton
 public class OwnerService {
 
     @Inject
     private OwnerRepository ownerRepository;
-    public Owner save(Owner owner) {
+    public int save(Owner owner) throws DataAccessException {
         return ownerRepository.save(owner);
     }
 

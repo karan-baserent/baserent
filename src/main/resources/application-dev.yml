@@ -5,6 +5,12 @@ micronaut:
         url: https://maps.googleapis.com
   security:
     authentication: cookie
+    token:
+      jwt:
+        claims-validators:
+          audience: true
+          issuer: true
+          not-before: true
 
 datasources:
   postgres:

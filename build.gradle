@@ -1,6 +1,6 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("io.micronaut.application") version "4.0.4"
+    id("io.micronaut.application") version "4.1.0"
     id("io.micronaut.aot") version "4.0.4"
     id 'nu.studer.jooq' version '8.2'
 }
@@ -13,9 +13,11 @@ repositories {
 }
 
 dependencies {
+    //implementation("io.micronaut:micronaut-core-processor")
     annotationProcessor("io.micronaut:micronaut-http-validation")
-    annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
-    implementation("io.micronaut.serde:micronaut-serde-jackson")
+    //annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
+    //implementation("io.micronaut.serde:micronaut-serde-jackson")
+    implementation("io.micronaut.beanvalidation:micronaut-hibernate-validator")
     implementation("io.micronaut.security:micronaut-security-jwt")
     compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
@@ -36,6 +38,11 @@ dependencies {
     jooqGenerator("org.liquibase:liquibase-core:4.24.0")
     compileOnly("org.immutables:value:2.9.2")
     annotationProcessor("org.immutables:value:2.9.2")
+    annotationProcessor("io.micronaut.validation:micronaut-validation-processor")
+    implementation("io.micronaut.validation:micronaut-validation")
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.16.0-rc1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.0-rc1'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.16.0-rc1'
 }
 
 

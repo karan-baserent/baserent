@@ -8,6 +8,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 import org.jooq.DSLContext;
+import org.jooq.exception.DataAccessException;
 
 @Singleton
 public class JooqOwnerRepository implements OwnerRepository {
@@ -20,20 +21,17 @@ public class JooqOwnerRepository implements OwnerRepository {
     }
 
     @Override
-    public Owner save(Owner owner) {
-        var result = context.insertInto(OWNER.OWNER)
+    public int save(Owner owner) throws DataAccessException {
+        return context.insertInto(OWNER.OWNER)
                 .set(context.newRecord(OWNER.OWNER, owner))
-                .returning()
-                .fetchOne();
-        return toDomain(result);
+                .returning(OWNER.OWNER.ID)
+                .fetchOne()
+                .getValue(OWNER.OWNER.ID);
     }
 
     private Owner toDomain(com.baserent.jooq.baserent.tables.records.OWNER result) {
         return ImmutableOwner.builder()
-                .firstName(result.getValue(OWNER.OWNER.FIRST_NAME))
-                .lastName(result.getValue(OWNER.OWNER.LAST_NAME))
                 .id(result.getValue(OWNER.OWNER.ID))
-                .email(result.getValue(OWNER.OWNER.EMAIL))
                 .build();
     }
 }

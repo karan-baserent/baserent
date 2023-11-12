@@ -1,49 +1,29 @@
 package com.baserent.infrastructure.dto.incoming.owner;
 
-import io.micronaut.core.annotation.NonNull;
-import io.micronaut.serde.annotation.Serdeable;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import io.micronaut.core.annotation.Introspected;
+import io.micronaut.validation.Validated;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import org.immutables.value.Value;
 
-@Serdeable
-public class OwnerSignUpRequestDto {
-    @NonNull
-    private String email;
-    @NonNull
-    private String password;
-    @NonNull
-    private String firstName;
 
-    @NonNull
-    private String lastName;
 
-    public String getEmail() {
-        return email;
-    }
+@JsonDeserialize(as = ImmutableOwnerSignUpRequestDto.class)
+@Value.Immutable
+//@Value.Style(passAnnotations = {Introspected.class, NotBlank.class})
+@Introspected
+public interface OwnerSignUpRequestDto {
+    @NotBlank
+    @Email
+    String getEmail();
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    @NotBlank
+    String getPassword();
 
-    public String getPassword() {
-        return password;
-    }
+    @NotBlank
+    String getFirstName();
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    @NotBlank
+    String getLastName();
 }
